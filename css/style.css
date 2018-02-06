@@ -130,3 +130,17 @@ body {
 				0 0 0 2px rgba(255,255,255,0.15) inset,
 				0 0 0 1px rgba(0,0,0,0.4);
 }
+
+/* searchbar */
+.stylish-input-group .input-group-addon{
+    background: white !important;
+}
+.stylish-input-group .form-control{
+	border-right:0;
+	box-shadow:0 0 0;
+	border-color:#ccc;
+}
+.stylish-input-group glyphicon-search{
+    border:0;
+    background:transparent;
+}

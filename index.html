@@ -40,7 +40,7 @@
                       <div class="col-md-6 col-md-offset-3">
                         <input type="submit" name="login-submit" id="login-submit" tabindex="2" class="form-control btn btn-login" value="Log In">
                         <a href="userCheckin.html">login straight to user page(test function)</a>
-                      </br>
+                        </br>
                         <a href="adminOnly.html">login straight to admin page(test function)</a>
                       </div>
                     </div>
@@ -48,27 +48,20 @@
                 </form>
                 <form id="register-form" action="model/doRegister.php" role="form" style="display: none;">
                   <div class="form-group">
-                    <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value="">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="lastname" id="firstname" tabindex="1" class="form-control" placeholder="Last Name" value="">
-                  </div>
-                  <div class="form-group">
                     <input type="text" name="employeeId" id="employeeId" tabindex="2" class="form-control" placeholder="Enter Employee ID">
                   </div>
                   <div class="form-group">
                     <input type="text" name="confirm-employeeId" id="confirm-employeeId" tabindex="2" class="form-control" placeholder="Confirm Employee ID">
                   </div>
                   <div class="form-group">
-                    <div class="dropdown">
-                      <button class="btn btn-primary dropdown-toggle form-control" type="button" data-toggle="dropdown">Select Department
-                        <span class="caret"></span></button>
-                      <ul class="dropdown-menu form-control">
-                        <li><a href="#">Department A</a></li>
-                        <li><a href="#">Department B</a></li>
-                        <li><a href="#">Department C</a></li>
-                      </ul>
-                    </div>
+                      <div id="seachbar">
+                        <div class="input-group stylish-input-group">
+                          <input type="text" class="form-control" placeholder="Search your Department">
+                          <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-search"></span>
+                          </span>
+                        </div>
+                      </div>
                   </div>
                   <div class="form-group">
                     <div class="row">
