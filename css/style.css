@@ -101,8 +101,8 @@ body {
 	transition: top .01s linear;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.15);
 }
-/* .btn-3d.red:hover    {background-color: #e74c3c;}
-.btn-3d.blue:hover   {background-color: #699DD1;} */
+.btn-3d.red:hover    {background-color: #e74c3c;}
+.btn-3d.blue:hover   {background-color: #699DD1;}
 /* 3D button colors */
 .btn-3d.red {
 	background-color: #e74c3c;
