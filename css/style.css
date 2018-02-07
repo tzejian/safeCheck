@@ -53,6 +53,15 @@ body {
 	box-shadow: none;
 	border-color: #ccc;
 }
+.panel-orange {
+    border-color: #373a3c;
+}
+.panel-orange>.panel-heading {
+    color: #fff;
+    background-color: #373a3c;
+    border-color: #373a3c;
+
+}
 .btn-login {
 	background-color: #59B2E0;
 	outline: none;
