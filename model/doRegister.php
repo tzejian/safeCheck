@@ -1,5 +1,9 @@
 <?php
-echo "doRegister hhahaha";
+session_start();
+include "dbFunctions.php";
+
+
+
 
 
 ?>
