@@ -9,5 +9,6 @@ if (!$link) {
     die(mysqli_error($link));
     // alternative way to display the error:
     // die(mysqli_connect_error());
+    //echo "Failed to connect to MySQL: " . MySQLi_connect_error();
 }
 ?>
