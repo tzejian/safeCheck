@@ -20,7 +20,7 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
   <script src="js/appController.js" type="text/javascript"></script>
 </head>
 
-<body>
+<body style="padding-top: 90px;">
   <div class="container-fluid" style="height:100%">
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2">
@@ -39,7 +39,7 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
           <div class="panel-body">
             <div class="row">
               <div class="col-md-12">
-                <form id="login-form" action="model/doLogin.php" role="form" style="display: block;">
+                <form id="login-form" action="model/doLogin.php" method="post"  style="display: block;">
                   <div class="form-group">
                     <input type="text" name="employeeID" id="employeeID" tabindex="1" class="form-control" placeholder="Employee ID" value="">
                   </div>
@@ -47,9 +47,9 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
                     <div class="row">
                       <div class="col-md-6 col-md-offset-3">
                         <input type="submit" name="login-submit" id="login-submit" tabindex="2" class="form-control btn btn-login" value="Log In">
-                        <a href="userCheckin.html">login straight to user page(test function)</a>
+                        <a href="userCheckin.php">login straight to user page(test function)</a>
                         </br>
-                        <a href="adminOnly.html">login straight to admin page(test function)</a>
+                        <a href="adminOnly.php">login straight to admin page(test function)</a>
                       </div>
                     </div>
                   </div>

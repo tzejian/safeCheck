@@ -41,6 +41,29 @@ $(function() {
     });
     return false;
   });
+  // $("#login-form").submit(function(e){
+  //   // e.preventDefault();
+  //   var empId =  $("[name=employeeID]").val();
+  //   console.log(empId);
+  //   $.ajax({
+  //       type: "POST",
+  //       url: "model/doLogin.php",
+  //       data: JSON.parse(empId),
+  //       dataType: "JSON",
+  //       success: function(data) {
+  //         console.log(data);
+  //         // $("#successModal").modal();
+  //         // $('#modalClose').click(function(){
+  //         //     location.reload(true);
+  //         // })
+  //
+  //       },error: function(xhr, status, error) {
+  //           var err = JSON.parse(xhr.responseText);
+  //           console.log(err.Message);
+  //         }
+  //   });
+  //   return false;
+  // });
 
 
   $('.dropdown-menu a').click(function(){
