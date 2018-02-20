@@ -1,10 +1,25 @@
 <?php
 include "model/dbFunctions.php";
-$getdeparmentList = "SELECT * FROM `userinfo`";
+$getdeparmentList = "SELECT * FROM `department`";
 $departmentListResult = mysqli_query($link, $getdeparmentList) or die(mysqli_error($link));
+
+
 while ($row = mysqli_fetch_assoc($departmentListResult)) {
+    //$getUserinfo = "SELECT COUNT(*) AS 'userCount' FROM `userinfo` WHERE `department` = 'PHYSICAL VAPOR DEPOSITION' AND `isCheck` = '1'";
+    $getUserinfo = "SELECT COUNT(*) AS 'userCount' FROM `userinfo` WHERE `department`='".$row['department']."' AND `isCheck` = 1";
+    $getUserinfoResult = mysqli_query($link, $getUserinfo) or die(mysqli_error($link));
+    // echo json_encode($getUserinfoResult);
+    $row['countCheck'] = 0;
+    while($ret = mysqli_fetch_array($getUserinfoResult)){
+    $row['countCheck'] = $ret['userCount'];
+    //echo json_encode($row['countCheck']);
+    }
     $departmentArray[] = $row;
+
 }
+//echo json_encode($departmentArray);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,10 +84,10 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
                           </thead>
                           <tbody>
                             <?php for ($i = 0; $i < count($departmentArray); $i ++) { ?>
-                              
+
                             <tr>
                               <td><?php echo $departmentArray[$i]['department'] ?></td>
-                              <td style="text-align: right;"><?php echo $departmentArray[$i]['isCheck'] ?></td>
+                              <td style="text-align: right;"><?php echo $departmentArray[$i]['countCheck'] ?></td>
                             </tr>
                             <?php } ?>
                           </tbody>

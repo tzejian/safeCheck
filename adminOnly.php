@@ -81,39 +81,38 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
                         </div>
                     </div>
                 </div>
-
-              <div class="col-lg-3 col-md-6">
-                  <div class="panel panel-red" role="button" id="resetCount" >
-                      <div class="panel-heading">
-                          <div class="row">
-                              <div class="col-xs-3">
-                                  <i class="fa fa-refresh fa-5x"></i>
-                              </div>
-                              <div class="col-xs-9 text-right">
-                              </br>
-                                  <div style="font-size: 14px;">Reset Check-In Count!</div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="col-lg-3 col-md-6">
-                  <div class="panel panel-green" id="checkDept" role="button">
-                      <div class="panel-heading">
-                          <div class="row">
-                              <div class="col-xs-3">
-                                  <i class="fa fa-tasks fa-5x"></i>
-                              </div>
-                              <div class="col-xs-9 text-right">
-                                  <div class="huge"><?php echo count($departmentArray) ?></div>
-                                  <div>Department</div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green" id="checkDept" role="button">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php echo count($departmentArray) ?></div>
+                                    <div>Department</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red" role="button" id="resetCount" >
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-refresh fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                </br>
+                                    <div style="font-size: 14px;">Reset Check-In Count!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
         <!-- /#page-wrapper -->
@@ -161,13 +160,14 @@ $("#resetCount").click(function(){
         dataType: "JSON",
         success: function(data) {
           console.log(data);
-          alert('success');
-
+          //alert('success');
+          location.reload(true);
         },error: function(obj, textStatus, errorThrown){
             console.log("Error " + textStatus + ": " + errorThrown);
 
         }
     });
+
     return false
   });
 });
