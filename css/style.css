@@ -153,3 +153,21 @@
     border:0;
     background:transparent;
 }
+@media screen and (max-width: 720px) {
+	.center-block {
+			 padding:0 !important;
+	}
+}
+
+
+
+
+
+/* chart css for future usage */
+/* .chart-container {
+  position: absolute;
+  margin: auto;
+  height: 500px;
+  width: 100%;
+	max-width: 400px;
+} */

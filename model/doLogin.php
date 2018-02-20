@@ -19,7 +19,7 @@ if(!isset($_SESSION['id'])){
       $msg = "Success";
       echo $msg;
       //print_r ($_SESSION);
-    header("Location: userCheckin.php");
+    header("Location: ../userCheckin.php");
   }else{
     $msg = "Invalid Login";
     echo $msg;

@@ -1,3 +1,7 @@
+<?php
+session_start();
+$isCheckValid = $_SESSION['isCheck'];
+?>
 <!DOCTYPE html>
 <html>
 
@@ -34,8 +38,12 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href=""><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
+                            <a href=""><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
+                        <li>
+                            <a href="model/doLogout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -50,24 +58,67 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary" role="button">
-                        <div class="panel-heading">
-                            <div class="row">
+                  <div class="panel panel-primary" role="button" id="fkthis" onclick="myFunction()">
+                      <div class="panel-heading">
+                          <div class="row">
                                 <div class="col-xs-3">
                                     <i class="fa fa-user fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-center">
                                     <div class="huge">Check In</div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                          </div>
+                      </div>
+                  </div>
+                    <script>
+                      function myFunction(){
+                        var dataString = {
+                          employId: "<?php echo $_SESSION['employee_id']; ?>",
+                          isCheck: "<?php echo $isCheckValid; ?>"
+                        };
+                          $.ajax({
+                            type: "POST",
+                            url: "model/doUpdate.php",
+                            data: dataString,
+                            dataType: "JSON",
+                            success: function(data){
+                              console.log(data);
+                              $("#successModal").modal()
+                              $("#checkStatus").text(data.status);
+                              $('#modalClose').click(function(){
+                                location.reload(true);
+                              })
+                            },error: function(obj, textStatus, errorThrown){
+                                console.log("Error " + textStatus + ": " + errorThrown);
+                            }
+                          })
+                          return false;
+                      }
+                    </script>
+
                 </div>
             </div>
         </div>
         <!-- /#page-wrapper -->
-
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="successModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">SUCCESSFULLY</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="checkStatus"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="modalClose"class="btn btn-default" data-dismiss="modal">OK, I got it</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
+
 
 </html>
