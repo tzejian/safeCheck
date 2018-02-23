@@ -18,10 +18,13 @@ if(!isset($_SESSION['id'])){
       $_SESSION['department'] = $row['department'];
       $_SESSION['isCheck'] = $row['isCheck'];
       $msg = "Success";
-      echo $msg."   Role: ".$_SESSION['role'];
+      echo $msg;
       if($_SESSION['role'] == 0){
         //user account
-        header("Location: ../userCheckin.php");
+        //do user checkin logic
+        $updateCheckin = "UPDATE `userinfo` SET `isCheck`= '1' WHERE `employee_id` = '$loginId'";
+        $status = mysqli_query($link, $updateCheckin) or die(mysqli_error($link));
+        header("Location: ../checkIn.php");
       }else{
         //admin account
         header("Location: ../adminOnly.php");
@@ -35,5 +38,6 @@ if(!isset($_SESSION['id'])){
   $msg = "You have already logged in";
   echo $msg;
 }
+mysqli_close($link);
 
 ?>

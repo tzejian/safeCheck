@@ -24,7 +24,7 @@ session_destroy();
           <div class="panel-heading">
             <div class="row">
               <div class="col-md-12">
-                <p style="font-size:30px">No Admin Rights</p>
+                <p style="font-size:30px">Thank you for checking in</p>
               </div>
             </div>
             <hr>
@@ -32,7 +32,7 @@ session_destroy();
           <div class="panel-body">
             <div class="row">
               <div class="col-md-12">
-                <p>Please Contact Adminstrator. You be redirect in 5 seconds.<p/>
+                <p>Check in success. You be redirect in 5 seconds.<p/>
               </div>
             </div>
           </div>

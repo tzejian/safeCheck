@@ -89,6 +89,22 @@
                                   <input type="text" id="employeeId" name="employeeId" class="form-control" value="<?php echo $user[0]['employee_id'] ?>" />
                               </div>
                           </div>
+                          <div class="form-group">
+                            <label for="role" class="col-md-2 control-label">Role:</label>
+                            <div class="col-md-4">
+                            <select id="role" name="role" class="form-control">
+                              <?php
+                                  if($user[0]['role'] == 1) {
+                                ?>
+                              <option value ='1'selected>Admin</option>
+                              <option value ='0'>Member</option>
+                            <?php } else { ?>
+                              <option value ='1'>Admin</option>
+                              <option value ='0' selected>Member</option>
+                              <?php } ?>
+                            </select>
+                          </div>
+                          </div>
                           <!-- for future use -->
                           <!-- <div class="form-group">
                             <label for="depList" class="col-md-2 control-label">Department:</label>

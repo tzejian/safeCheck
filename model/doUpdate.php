@@ -9,7 +9,7 @@ if($isCheck == '0'){
   $_SESSION['id'] = '1';
   $updateCheckin = "UPDATE `userinfo` SET `isCheck`= '1' WHERE `employee_id` = '$employId'";
   $status = mysqli_query($link, $updateCheckin) or die(mysqli_error($link));
-  mysqli_close($link);
+
   $row["status"] = "Check in successfully!";
   $row["isCheck"] = $isCheck;
   echo json_encode($row);
@@ -18,6 +18,7 @@ if($isCheck == '0'){
   $row["isCheck"] = $isCheck;
   echo json_encode($row);
 }
+mysqli_close($link);
 
 
 ?>
