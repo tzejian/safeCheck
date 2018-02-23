@@ -3,30 +3,9 @@ session_start();
 if($_SESSION['role'] == 0){
   header("Location: checkRolePanel.php");
 }
-include "model/dbFunctions.php";
-$getdeparmentList = "SELECT * FROM `department`";
-$departmentListResult = mysqli_query($link, $getdeparmentList) or die(mysqli_error($link));
-
-
-while ($row = mysqli_fetch_assoc($departmentListResult)) {
-    //$getUserinfo = "SELECT COUNT(*) AS 'userCount' FROM `userinfo` WHERE `department` = 'PHYSICAL VAPOR DEPOSITION' AND `isCheck` = '1'";
-    $getUserinfo = "SELECT COUNT(*) AS 'userCount' FROM `userinfo` WHERE `department`='".$row['department']."' AND `isCheck` = 1";
-    $getUserinfoResult = mysqli_query($link, $getUserinfo) or die(mysqli_error($link));
-    // echo json_encode($getUserinfoResult);
-    $row['countCheck'] = 0;
-    while($ret = mysqli_fetch_array($getUserinfoResult)){
-    $row['countCheck'] = $ret['userCount'];
-    //echo json_encode($row['countCheck']);
-    }
-    $departmentArray[] = $row;
-
-}
-//echo json_encode($departmentArray);
-
-
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <title>Roger Project</title>
@@ -46,9 +25,9 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
 </head>
 
 <body>
-    <div id="wrapper">
+  <div id="wrapper">
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -65,6 +44,9 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
                             <a href="adminOnly.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
+                            <a href=""><i class="fa fa-cog fa-fw"></i> Settings</a>
+                        </li>
+                        <li>
                             <a href="model/doLogout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
@@ -73,39 +55,15 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
         </nav>
         <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-12 ">
-                    <h1 class="page-header">Department Details</h1>
+                <div class="col-lg-12">
+                    <h1 class="page-header">Admin Settings</h1>
                 </div>
                 <!-- /.col-lg-12 -->
-                <div class="row">
-                  <div class="col-md-10 col-sm-8">
-                        <table class="table" style="margin-bottom: 0px;" >
-                          <thead>
-                            <tr>
-                              <th>Department</th>
-                              <th style="text-align: right;">User Count</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php for ($i = 0; $i < count($departmentArray); $i ++) { ?>
-
-                            <tr>
-                              <td><?php echo $departmentArray[$i]['department'] ?></td>
-                              <td style="text-align: right;"><?php echo $departmentArray[$i]['countCheck'] ?></td>
-                            </tr>
-                            <?php } ?>
-                          </tbody>
-                        </table>
-
-                  </div>
-                </div>
             </div>
         </div>
         <!-- /#page-wrapper -->
 
     </div>
-    <!-- /#wrapper -->
-
 </body>
 
 </html>

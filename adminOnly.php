@@ -1,10 +1,23 @@
 <?php
+session_start();
+if($_SESSION['role'] == 0){
+  header("Location: checkRolePanel.php");
+}
 include "model/dbFunctions.php";
+//get list of department from database
 $getdeparmentList = "SELECT * FROM `department`";
 $departmentListResult = mysqli_query($link, $getdeparmentList) or die(mysqli_error($link));
 while ($row = mysqli_fetch_assoc($departmentListResult)) {
     $departmentArray[] = $row;
 }
+//get latest database update time
+$getTimeCheck = "SELECT TIME(`timeCheck`) AS 'Time' FROM `userinfo` WHERE (SELECT MAX(`timeCheck`)) ORDER BY `timeCheck` DESC";
+$queryTimeCheck = mysqli_query($link, $getTimeCheck) or die(mysqli_error($link));
+$timeRow = mysqli_fetch_assoc($queryTimeCheck);
+//get the amount of checkin for last 3 minutes interval
+$getLastThree = "SELECT COUNT(DISTINCT(case when `timeCheck` >= now() - interval 3 MINUTE then id end)) AS '3MinCount' FROM `userinfo` WHERE `isCheck` = 1";
+$queryLastThree = mysqli_query($link, $getLastThree) or die(mysqli_error($link));
+$threeMin = mysqli_fetch_assoc($queryLastThree);
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,7 +42,7 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
 <body>
   <div id="wrapper">
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -37,14 +50,20 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Global Foundries</a>
+                <a class="navbar-brand" href="index.html">GlobalFoundries</a>
             </div>
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href=""><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="adminOnly.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
+                        <li>
+                            <a href="profile.php"><i class="fa fa-user fa-fw"></i> Profile</a>
+                        </li>
+                        <!-- <li>
+                            <a href="settings.php"><i class="fa fa-cog fa-fw"></i> Settings</a>
+                        </li> -->
                         <li>
                             <a href="model/doLogout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
@@ -60,8 +79,40 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
+
+              <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="panel panel-yellow" >
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-clock-o fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                  <!-- <div class="row">
+                                    <div class="col-xs-12">
+                                      <div class="medium">Current: <span id="clock"></div>
+                                    </div>
+                                  </div> -->
+                                  <div class="row">
+                                    <div class="col-xs-12">
+                                      <div class="huge"><?php echo $threeMin['3MinCount']; ?></div>
+                                      <div class="medium">Check in for Last 3 minutes</div>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-xs-12">
+                                      <div class="medium">Last Updated: <span><?php echo $timeRow['Time']; ?></span></div>
+                                    </div>
+                                  </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
@@ -81,7 +132,10 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+              </div>
+              <div class="row">
+                <!-- for future use -->
+                <!-- <div class="col-lg-6 col-md-6">
                     <div class="panel panel-green" id="checkDept" role="button">
                         <div class="panel-heading">
                             <div class="row">
@@ -95,8 +149,8 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
+                </div> -->
+                <div class="col-lg-6 col-md-6">
                     <div class="panel panel-red" role="button" id="resetCount" >
                         <div class="panel-heading">
                             <div class="row">
@@ -111,9 +165,11 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
                         </div>
                     </div>
                 </div>
+              </div>
 
 
-            </div>
+
+            <!-- </div> for top 2nd row-->
         </div>
         <!-- /#page-wrapper -->
 
@@ -139,6 +195,20 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
 </body>
 
 </html>
+<!-- <script>
+  window.onload = (function () {
+
+    var clockElement = document.getElementById( "clock" );
+    var cele = document.getElementById( "clock2" );
+    function updateClock ( clock ) {
+      clock.innerHTML = new Date().toLocaleTimeString('it-IT');
+    }
+    setInterval(function () {
+        updateClock( clockElement );
+    }, 1000);
+    updateClock(cele);
+    }());
+</script> -->
 <script>
 $(document).ready(function(){
   $("#checkDept").click(function(){

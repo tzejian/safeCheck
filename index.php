@@ -47,9 +47,6 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
                     <div class="row">
                       <div class="col-md-6 col-md-offset-3">
                         <input type="submit" name="login-submit" id="login-submit" tabindex="2" class="form-control btn btn-login" value="Log In">
-                        <a href="userCheckin.php">login straight to user page(test function)</a>
-                        </br>
-                        <a href="adminOnly.php">login straight to admin page(test function)</a>
                       </div>
                     </div>
                   </div>
@@ -71,13 +68,13 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
                       }
                   </script>
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <select id="depList" name="depList" class="form-control">
                       <?php for ($i = 0; $i < count($departmentArray); $i ++) { ?>
                       <option value =<?php echo $departmentArray[$i]['department_id'] ?>><?php echo $departmentArray[$i]['department'] ?></option>
                       <?php } ?>
                     </select>
-                  </div>
+                  </div> -->
                   <div class="form-group">
                     <div class="row">
                       <div class="col-md-6 col-md-offset-3">

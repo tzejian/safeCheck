@@ -159,6 +159,22 @@
 	}
 }
 
+/* for modifyUser page */
+.button1{
+	width: 100px;
+}
+.button1 {
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+#userTable {
+	width: 100%;
+}
+.search {
+    margin-bottom: 10px;
+}
+
+
 
 
 

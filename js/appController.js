@@ -1,5 +1,6 @@
 $(function() {
 
+
     $('#login-form-link').click(function(e) {
 		$("#login-form").delay(100).fadeIn(100);
  		$("#register-form").fadeOut(100);
@@ -18,14 +19,14 @@ $(function() {
     // e.preventDefault();
     var dataString={
         empId:  $("[name=employeeId]").val(),
-        cfmId:  $("[name=confirm-employeeId]").val(),
-        selection:  $("[name=depList]").val()
+        cfmId:  $("[name=confirm-employeeId]").val()
+        //selection:  $("[name=depList]").val()
     }
     console.log(dataString);
     $.ajax({
         type: "POST",
         url: "model/doRegister.php",
-        data:(dataString),
+        data: dataString,
         dataType: "JSON",
         success: function(data) {
           console.log(data.message);

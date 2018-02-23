@@ -18,25 +18,6 @@ if($isCheck == '0'){
   $row["isCheck"] = $isCheck;
   echo json_encode($row);
 }
-//   $isCheck = 1;
-//   $employId = $_POST['employId'];
-//   $updateCheckin = "UPDATE `userinfo` SET `isCheck`= '$isCheck' WHERE `employee_id` = '$employId'";
-//   $status = mysqli_query($link, $updateCheckin) or die(mysqli_error($link));
-//
-//   if($status){
-//       $row["status"] = $status;
-//       $row["message"] = "updated successfully.";
-//       echo json_encode($row);
-//   }else{
-//       $row["status"] = $status;
-//       $row["message"] = "Update unsuccessful.";
-//       echo json_encode($row);
-//   }
-//   mysqli_close($link);
-// }else{
-//   $row['message'] = "Already Updated";
-//   echo json_encode($row);
-// }
 
 
 ?>

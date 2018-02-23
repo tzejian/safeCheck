@@ -14,12 +14,19 @@ if(!isset($_SESSION['id'])){
       $row = mysqli_fetch_array($result);
       $_SESSION['id'] = $row['id'];
       $_SESSION['employee_id'] = $row['employee_id'];
+      $_SESSION['role'] = $row['role'];
       $_SESSION['department'] = $row['department'];
       $_SESSION['isCheck'] = $row['isCheck'];
       $msg = "Success";
-      echo $msg;
-      //print_r ($_SESSION);
-    header("Location: ../userCheckin.php");
+      echo $msg."   Role: ".$_SESSION['role'];
+      if($_SESSION['role'] == 0){
+        //user account
+        header("Location: ../userCheckin.php");
+      }else{
+        //admin account
+        header("Location: ../adminOnly.php");
+      }
+    //header("Location: ../userCheckin.php");
   }else{
     $msg = "Invalid Login";
     echo $msg;
