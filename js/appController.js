@@ -29,9 +29,12 @@ $(function() {
         data: dataString,
         dataType: "JSON",
         success: function(data) {
-          console.log(data.message);
+          console.log(data);
+
           if(data.message == "matched"){
             alert("Id has already been registered.");
+          }else if (data.message == "pls match employee id") {
+            alert("Id does not match");
           }else{
             //alert('register success');
             $("#successModal").modal();

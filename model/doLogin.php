@@ -3,7 +3,7 @@ session_start();
 include "dbFunctions.php";
 $msg = "";
 //login check
-if(!isset($_SESSION['id'])){
+//if(!isset($_SESSION['id'])){
   if(isset($_POST["employeeID"])){
     $loginId = $_POST["employeeID"];
   }
@@ -18,10 +18,11 @@ if(!isset($_SESSION['id'])){
       $_SESSION['department'] = $row['department'];
       $_SESSION['isCheck'] = $row['isCheck'];
       $msg = "Success";
-      echo $msg;
+      //echo $msg;
       if($_SESSION['role'] == 0){
         //user account
         //do user checkin logic
+        date_default_timezone_set("Asia/Singapore");
         $updateCheckin = "UPDATE `userinfo` SET `isCheck`= '1' WHERE `employee_id` = '$loginId'";
         $status = mysqli_query($link, $updateCheckin) or die(mysqli_error($link));
         header("Location: ../checkIn.php");
@@ -31,13 +32,17 @@ if(!isset($_SESSION['id'])){
       }
     //header("Location: ../userCheckin.php");
   }else{
-    $msg = "Invalid Login";
-    echo $msg;
+    header("Location: ../invalidLogin.php");
   }
-}else{
-  $msg = "You have already logged in";
-  echo $msg;
-}
+//}else{
+  // $msg = "You have already logged in";
+  // echo $msg;
+//  if($_SESSION['role'] == 0){
+ //   header("Location: ../checkIn.php");
+ // }else{
+//    header("Location: ../adminOnly.php");
+ // }
+//}
 mysqli_close($link);
 
 ?>

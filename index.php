@@ -53,11 +53,12 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
                 </form>
                 <form id="register-form" action="" style="display: none;">
                   <div class="form-group">
-                    <input type="text" title="Example: E1234567" pattern="[A-Za-z]{1}[0-9]{7}" name="employeeId" id="employeeId" tabindex="2" class="form-control" placeholder="Enter Employee ID" required>
+                    <div class="form-group">
+                    <input type="text" title="Example: E1234567 or RC123456" pattern='^[eE]{1}\d{4,7}|^[rR]{1}[cC]{1}(\d{4}|\d{6})$' name="employeeId" id="employeeId" tabindex="2" class="form-control" placeholder="Enter Employee ID" required>
                   </div>
                   <div class="form-group">
-                    <input type="text" title="Example: E1234567" pattern="[A-Za-z]{1}[0-9]{7}" oninput="check(this)" name="confirm-employeeId" id="confirm-employeeId" tabindex="2" class="form-control" placeholder="Confirm Employee ID" required>
-                    <script language='javascript' type='text/javascript'>
+                    <input type="text" name="confirm-employeeId" pattern='^[eE]{1}\d{4,7}|^[rR]{1}[cC]{1}(\d{4}|\d{6})$' id="confirm-employeeId" tabindex="2" class="form-control" placeholder="Confirm Employee ID" required>
+                    <!-- <script language='javascript' type='text/javascript'>
                       function check(input) {
                           if (input.value != document.getElementById('employeeId').value) {
                               input.setCustomValidity('Id Must be Matching.');
@@ -66,7 +67,7 @@ while ($row = mysqli_fetch_assoc($departmentListResult)) {
                               input.setCustomValidity('');
                           }
                       }
-                  </script>
+                  </script> -->
                   </div>
                   <!-- <div class="form-group">
                     <select id="depList" name="depList" class="form-control">

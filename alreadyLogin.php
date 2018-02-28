@@ -24,7 +24,7 @@ session_destroy();
           <div class="panel-heading">
             <div class="row">
               <div class="col-md-12">
-                <p style="font-size:30px">Thank you for checking in</p>
+                <p style="font-size:30px">You have Already login</p>
               </div>
             </div>
             <hr>
@@ -32,8 +32,7 @@ session_destroy();
           <div class="panel-body">
             <div class="row">
               <div class="col-md-12">
-                <p>Check in success.<p/>
-                <button class="form-control ui-btn btn-primary" onclick="window.location = 'index.php';">Back</button>
+                <p>You be redirect in 5 seconds.<p/>
               </div>
             </div>
           </div>
@@ -43,11 +42,11 @@ session_destroy();
   </div>
 </body>
 </html>
-<!-- <script>
+<script>
   $(document).ready(function () {
     // Handler for .ready() called.
     window.setTimeout(function () {
         location.href = "index.php";
     }, 3000);
   });
-</script> -->
+</script>
