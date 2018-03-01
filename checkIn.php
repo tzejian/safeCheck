@@ -1,3 +1,7 @@
+<?php
+session_start();
+session_destroy();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -12,35 +16,38 @@
   <script src="js/appController.js" type="text/javascript"></script>
 </head>
 
-<body>
+<body style="padding-top: 90px;">
   <div class="container-fluid" style="height:100%">
     <div class="row">
-      <div class="col-md-8 col-sm-offset-2">
-        <div class="panel panel-primary">
-          <div class="panel-heading">User Check in</div>
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="panel panel-login">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-md-12">
+                <p style="font-size:30px">Thank you for checking in</p>
+              </div>
+            </div>
+            <hr>
+          </div>
           <div class="panel-body">
             <div class="row">
               <div class="col-md-12">
-                <div class="col-md-8 col-md-offset-4">
-                  <a href="#" class="btn-3d blue">I'm Here</a>
-                </div>
+                <p>Check in success.<p/>
+                <button class="form-control ui-btn btn-primary" onclick="window.location = 'index.php';">Back</button>
               </div>
             </div>
-          </br>
-            <div class="row">
-              <div class="col-md-6 col-md-offset-3">
-                <p class="text-info lead">Employee id: 1234568</p>
-                <p class="text-info lead">Employee name: Tan Ah Kow</p>
-                <a href="index.html">go back to index page(test function)</a>
-              </div>
-            </div>
-
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </body>
-
 </html>
+<!-- <script>
+  $(document).ready(function () {
+    // Handler for .ready() called.
+    window.setTimeout(function () {
+        location.href = "index.php";
+    }, 3000);
+  });
+</script> -->

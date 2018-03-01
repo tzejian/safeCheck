@@ -1,3 +1,7 @@
+<?php
+session_start();
+session_destroy();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -12,33 +16,37 @@
   <script src="js/appController.js" type="text/javascript"></script>
 </head>
 
-<body>
+<body style="padding-top: 90px;">
   <div class="container-fluid" style="height:100%">
     <div class="row">
-      <div class="col-md-8 col-sm-offset-2">
-        <div class="panel panel-primary">
-          <div class="panel-heading">Admin check user count</div>
-          <div class="panel-body">
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="panel panel-login">
+          <div class="panel-heading">
             <div class="row">
-              <div class="col-md-6 col-md-offset-3">
-                <p class="text-info lead">Total amount of user check-in: 59</p>
-                <p class="text-info lead">Department A count: 10</p>
-                <p class="text-info lead">Department B count: 19</p>
-                <p class="text-info lead">Department C count: 30</p>
-              </br>
-                <a href="#" class="btn-3d red">Reset Total count</a>
-              </br>
-                <a href="index.html">go back to index page(test function)</a>
-
+              <div class="col-md-12">
+                <p style="font-size:30px">Invalid Login</p>
               </div>
             </div>
-
+            <hr>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-12">
+                <p>You be redirect in 5 seconds.<p/>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </body>
-
 </html>
+<script>
+  $(document).ready(function () {
+    // Handler for .ready() called.
+    window.setTimeout(function () {
+        location.href = "index.php";
+    }, 3000);
+  });
+</script>
