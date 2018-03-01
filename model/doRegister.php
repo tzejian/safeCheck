@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "dbFunctions.php";
+
 $employeeid = $_POST['empId'];       //this will get the user input value.
 $cfmEmployeeid = $_POST['cfmId'];
 //$option = $_POST['selection'];        //this will get the value $i from register.   //for future use
@@ -39,6 +40,8 @@ if($valid == 1){
 mysqli_close($link);
 
 //, `department`     , (SELECT `department` FROM `department`WHERE `department_id` = $option)  sql for future use
+
+
 
 
 ?>
